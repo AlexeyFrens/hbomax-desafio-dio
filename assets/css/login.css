@@ -1,0 +1,89 @@
+@import 'global.css';
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.menu--login {
+    position: static;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 60px;
+}
+
+.login__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--form-bg-color);
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.login__title {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.login__label {
+    color: var(--text-color);
+}
+
+.login__input {
+    width: 100%;
+    height: 50px;
+    border: var(--form-field-border);
+    border-radius: 8px;
+    background-color: var(--form-field-bg-color);
+    margin-top: 24px;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.login__input::placeholder {
+    color: var(--form-field-placeholder);
+    font-size: 1rem;
+}
+
+.login__input:invalid {
+    border-color: var(--form-field-error);
+}
+
+.login__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.login__remember-text {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (min-width: 450px) {
+    .login__actions {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (min-width: 630px) {
+    body {
+        background-image: url("../images/background-movies-series.png");
+    }
+}
+

@@ -36,50 +36,6 @@
     }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Raleway', sans-serif;
-}
-
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: var(--nav-bg-color);
-    padding: 30px;
-    gap: 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.menu__logo img{
-    width: 100px;
-    height: auto;
-}
-
-
-.menu__link {
-    font-size: .8rem;
-}
-
-.menu__link--colored {
-    padding: 10px 30px;
-    background-color: var(--tertiary-color);
-    border-radius: 20px;
-    transition: .5s ease-in-out;
-    margin-left: 10px;
-}
-
-.menu__link--colored:hover {
-    background-color: var(--btn-link-bg-color);
-    color: var(--btn-link-color)
-}
-
 .header {
     background: linear-gradient(-45deg, #56125b, #0f0f10, #271e6e);
     background-size: 400% 400%;
@@ -177,12 +133,15 @@
     text-align: center;
     padding: 0 20px;
     gap: 40px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .subscription__plans {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    perspective: 1500px;
 }
 
 .subscription__card {
@@ -196,6 +155,7 @@
     padding: 40px;
     justify-content: space-between;
     min-height: 550px;
+    transition: transform 1s ease-in-out;
 }
 
 .subscription__plan h3 {
@@ -227,25 +187,33 @@
     margin: 100px auto;
     max-width: 1200px;
     text-align: center;
-    padding: 0 20px;
 }
 
 .streaming-content__cards {
-    margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(6, 100%);
     grid-auto-flow: column;
+    grid-auto-columns: minmax(87.5vw, 1fr);
+    gap: 40px;
     overflow: auto hidden;
-    gap: 20px;
+    padding: 40px 20px;
 }
 
 .streaming-content__card {
-    border-radius: 15px;
+    width: 100%;
+    min-height: 280px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    transition: transform 0.8s, background 0.8s, border 1s;
     border: 3px solid transparent;
-    max-width: 300px;
+    border-radius: 15px;
+}
+
+.streaming-content__card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 1s;
 }
 
 .streaming-content__card:hover {
@@ -254,13 +222,6 @@
 
 .streaming-content__card:hover img{
     opacity: 0;
-}
-
-.streaming-content__card img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: opacity 2s;
 }
 
 .streaming-content__card:nth-child(1):hover {
@@ -287,43 +248,37 @@
     background-image: url("../images/UCL-Hover.webp");
 }
 
-.footer {
-    padding: 0 20px;
+@media screen and (min-width: 768px) {
+    .streaming-content__cards {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .header{
+        margin-top: 95px;
+    }
+
+    .subscription__plans {
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
-.footer__link__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-}
+@media screen and (min-width: 1000px) {
+    .streaming-content__cards {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
 
-.footer__link {
-    color: var(--link-color);
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 2px;
-    transition: color .5s;
-    font-size: 0.875rem;
-}
+    .streaming-content__card:hover {
+        transform: scale(1.05);
+    }
 
-.footer__link:hover {
-    color: var(--text-color);
-}
+    .subscription__plans:has(.subscription__card:nth-child(1):hover) .subscription__card:nth-child(2) {
+        transform: rotateY(-45deg);
+    }
 
-.footer__copyright {
-    text-align: center;
-    color: var(--link-color);
-    font-size: 0.75rem;
-    font-weight: lighter;
-    margin: 20px;
-}
-
-.footer__container-social-media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 80px 0 20px;
+    .subscription__plans:has(.subscription__card:nth-child(2):hover) .subscription__card:nth-child(1) {
+        transform: rotateY(45deg);
+    }
 }
